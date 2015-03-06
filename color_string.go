@@ -4,13 +4,14 @@ package color
 
 import "fmt"
 
-const _Color_name = "WhiteBlackBlueGreenLightRedBrownPurpleOrangeYellowLightGreenCyanLightCyanLightBluePinkGrayLightGray"
+const _Color_name = "NoneWhiteBlackBlueGreenLightRedBrownPurpleOrangeYellowLightGreenCyanLightCyanLightBluePinkGrayLightGray"
 
-var _Color_index = [...]uint8{0, 5, 10, 14, 19, 27, 32, 38, 44, 50, 60, 64, 73, 82, 86, 90, 99}
+var _Color_index = [...]uint8{0, 4, 9, 14, 18, 23, 31, 36, 42, 48, 54, 64, 68, 77, 86, 90, 94, 103}
 
 func (i Color) String() string {
+	i -= -1
 	if i < 0 || i+1 >= Color(len(_Color_index)) {
-		return fmt.Sprintf("Color(%d)", i)
+		return fmt.Sprintf("Color(%d)", i+-1)
 	}
 	return _Color_name[_Color_index[i]:_Color_index[i+1]]
 }
