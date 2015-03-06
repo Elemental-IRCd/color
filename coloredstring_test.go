@@ -51,3 +51,15 @@ func TestNewColoredTextWithBackgroundAndForegroundColor(t *testing.T) {
 		t.Fatalf("Expected c.Foreground == LightRed, got %s", c.Foreground.String())
 	}
 }
+
+func TestNewColoredTextWithColorsThatMakeNoSense(t *testing.T) {
+	_, err := NewColoredText([]Color{LightBlue, Black, Green}, "Hi")
+	if err != ErrWrongColorNumber || err == nil {
+		t.Fatal("Expected an error")
+	}
+
+	_, err = NewColoredText([]Color{Color(55)}, "test")
+	if err != ErrBadColor || err == nil {
+		t.Fatal(err)
+	}
+}
