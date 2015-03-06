@@ -5,22 +5,22 @@ type Color int
 
 // Color codes that mIRC uses. Names taken from http://www.mirc.com/colors.html.
 const (
-	ColorWhite Color = iota
-	ColorBlack
-	ColorBlue
-	ColorGreen
-	ColorLightRed
-	ColorBrown
-	ColorPurple
-	ColorOrange
-	ColorYellow
-	ColorLightGreen
-	ColorCyan
-	ColorLightCyan
-	ColorLightBlue
-	ColorPink
-	ColorGray
-	ColorLightGray
+	White Color = iota
+	Black
+	Blue
+	Green
+	LightRed
+	Brown
+	Purple
+	Orange
+	Yellow
+	LightGreen
+	Cyan
+	LightCyan
+	LightBlue
+	Pink
+	Gray
+	LightGray
 )
 
 //go:generate stringer -type=Color
