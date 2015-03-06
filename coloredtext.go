@@ -19,9 +19,11 @@ type ColoredText struct {
 func (c ColoredText) String() string {
 	if c.Background != None {
 		return fmt.Sprintf("%c%d,%d%s%c", ColorCodeDelim, c.Foreground, c.Background, c.Content, ColorCodeDelim)
+	} else if c.Foreground != None {
+		return fmt.Sprintf("%c%d%s%c", ColorCodeDelim, c.Foreground, c.Content, ColorCodeDelim)
 	}
 
-	return fmt.Sprintf("%c%d%s%c", ColorCodeDelim, c.Foreground, c.Content, ColorCodeDelim)
+	return c.Content
 }
 
 // NewColoredText makes a ColoredText with given colors and a content or returns
