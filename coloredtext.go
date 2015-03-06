@@ -16,7 +16,8 @@ type ColoredText struct {
 	Content    string `json:"content"`
 }
 
-func (c ColoredText) String() string {
+// IRCString returns a ColoredText as it should be shown on IRC.
+func (c ColoredText) IRCString() string {
 	if c.Background != None {
 		return fmt.Sprintf("%c%d,%d%s%c", ColorCodeDelim, c.Foreground, c.Background, c.Content, ColorCodeDelim)
 	} else if c.Foreground != None {
@@ -24,6 +25,23 @@ func (c ColoredText) String() string {
 	}
 
 	return c.Content
+}
+
+// String returns a ColoredText as a string.
+func (c ColoredText) String() string {
+	ret := "<ColoredText "
+
+	if c.Foreground != None {
+		ret = ret + fmt.Sprintf("Foreground: %s ", c.Foreground.String())
+	}
+
+	if c.Background != None {
+		ret = ret + fmt.Sprintf("Foreground: %s ", c.Foreground.String())
+	}
+
+	ret = ret + fmt.Sprintf(`Content: "%s"`, c.Content)
+
+	return ret
 }
 
 // NewColoredText makes a ColoredText with given colors and a content or returns
